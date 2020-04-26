@@ -3,7 +3,7 @@
 
 $(document).on('turbolinks:load', function(){
   var theForm = $('#pro_form');
-  var submitBtn = $('#form-submit-btn');
+  var submitBtn = $('#form-signup-btn');
   
   //Set Stripe public key.
   Stripe.setPublishableKey( $('meta[name="stripe-key"]').attr('content') );
@@ -24,7 +24,7 @@ $(document).on('turbolinks:load', function(){
     var error = false;
     
     //validate card number.
-    if (!Stripe.card.validateCardNumber(ccNum)) {
+    if(!Stripe.card.validateCardNumber(ccNum)) {
       error = true;
       alert('The credit card number appears to be invalid');
     }
@@ -48,7 +48,7 @@ $(document).on('turbolinks:load', function(){
       //Send the card info to Stripe.
       Stripe.createToken({
         number: ccNum,
-        cvc : cvcNum,
+        cvc: cvcNum,
         exp_month: expMonth,
         exp_year: expYear
       }, stripeResponseHandler);
