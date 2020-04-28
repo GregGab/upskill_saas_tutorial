@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
     @profile = @user.build_profile( profile_params )
     @profile.save
       flash[:success] = "Profile UPdated!"
-      redirect_to root_path
+      redirect_to user_path( params[:user_id] )
   end
   
   private 
