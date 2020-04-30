@@ -12,9 +12,18 @@ class ProfilesController < ApplicationController
     @user = User.find( params[:user_id] )
     # Create profile linked to this specific user
     @profile = @user.build_profile( profile_params )
-    @profile.save
+    if @profile.save
       flash[:success] = "Profile UPdated!"
       redirect_to user_path( params[:user_id] )
+    else
+      render action :new
+    end
+  end
+  
+  # GET to/users/:user_id/profile/edit
+  def edit
+    @user = User.find( params[:user_id] )
+    @profile = @user.profile
   end
   
   private 
