@@ -4,6 +4,30 @@
 </div>
   <div class="container home-signup-links">
     <div class="row">
+      
+      <% if user_signed_in? %>
+      <div class="col-md-6">
+        <div class="well">
+          <h2 class="text-center">Your Profile</h2>
+          <% if current_user.profile %>
+            <%= link_to "Edit your profile", "#", class: 'btn btn-default btn-lgn btn-block' %>
+            <%= link_to "View your profile", user_path(id: current_user.id), class: 'btn btn-default btn-lgn btn-block' %>
+          <% else %>
+            <p class="text-center">Create your profile so that you can share your information with the community</p>
+            <%= link_to "Create your profile", new_user_profile_path(user_id: current_user.id), class: 'btn btn-default btn-lgn btn-block' %> 
+          <% end %>
+          
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="well">
+          <h2 class="text-center">Community</h2>
+          <p class="text-center">Visit our community to meet other developers, entrepreneurs, and investors!</p>
+          <%= link_to "Visit the community", "#", class: 'btn btn-default btn-lgn btn-block' %>
+        </div>
+      </div>
+      
+      <% else %>
       <div class="col-md-6">
         <div class="well">
           <h2 class="text-center">Basic Membership</h2>
@@ -23,6 +47,6 @@
     </div>
   </div>
   <div class="container">
-  <%= link_to "Create your profile!", new_user_profile_path(user_id: current_user.id) if user_signed_in? %>
+      <% end %>
   </div>
 </div>
