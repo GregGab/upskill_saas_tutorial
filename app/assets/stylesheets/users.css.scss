@@ -3,6 +3,13 @@
     height: 150px;
 }
 
+// User index Page Style
+.user-index-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
 .job-title-icon {
   display: inline-block;
   width: 30px;
@@ -29,4 +36,8 @@
 .well.profile-contact-info {
   background-color: #5bc0de;
   border-color: #46b8da;
+}
+
+.well.white-bg {
+  background-color: white;
 }
